@@ -1,0 +1,62 @@
+// 让小球向右下运动，遇到边缘后反弹
+
+// 每隔一段时间（20ms），改变小球的left和top
+
+var ball = document.querySelector('.ball');
+var disX = 2,
+  disY = 2;
+// 屏幕的宽高
+var w = document.documentElement.clientWidth;
+var h = document.documentElement.clientHeight;
+var ew = ball.clientWidth,
+  eh = ball.clientHeight;
+
+// 计算最大横纵坐标
+var maxLeft = w - ew;
+var maxTop = h - eh;
+
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+// 随机改变背景颜色
+function changeBg() {
+  var r = getRandom(0, 200);
+  var g = getRandom(0, 200);
+  var b = getRandom(0, 200);
+  ball.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+
+setInterval(function () {
+  var rect = ball.getBoundingClientRect();
+  var x = rect.left,
+    y = rect.top;
+  var left = x + disX;
+  var top = y + disY;
+
+  // 控制范围
+  if (left > maxLeft) {
+    left = maxLeft;
+    disX = -disX;
+    changeBg();
+  }
+  if (left < 0) {
+    left = 0;
+    disX = -disX;
+    changeBg();
+  }
+
+  if (top > maxTop) {
+    top = maxTop;
+    disY = -disY;
+    changeBg();
+  }
+  if (top < 0) {
+    top = 0;
+    disY = -disY;
+    changeBg();
+  }
+
+  ball.style.left = left + 'px';
+  ball.style.top = top + 'px';
+}, 20);
