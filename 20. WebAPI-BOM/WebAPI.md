@@ -326,7 +326,7 @@ e.preventDefault();
 
 [Element.getBoundingClientRect()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect)
 
-![](https://mdn.mozillademos.org/files/15087/rect.png)
+![element-box-diagram](http://mdrs.yuanjin.tech/img/202210151248555.png)
 
 > 上图中的 top、left、right、bottom 均相对于视口
 
