@@ -31,6 +31,19 @@
         };
       }
 
+      // function debounce(fn, delay) {
+      //   var tempID = null;
+      //   return function () {
+      //     var args = Array.prototype.slice.call(arguments);
+      //     if (tempID) {
+      //       clearTimeout(tempID);
+      //     }
+      //     tempID = setTimeout(function () {
+      //       fn.apply(this, args);
+      //     }, delay);
+      //   };
+      // }
+
       function sum(a, b) {
         console.log(a + b);
       }
@@ -38,10 +51,10 @@
       var newSum = debounce(sum, 3000);
 
       var handler = debounce(function () {
-        console.log('move');
+        console.log("move");
       }, 200);
 
-      window.addEventListener('mousemove', handler);
+      window.addEventListener("mousemove", handler);
     </script>
   </body>
 </html>
