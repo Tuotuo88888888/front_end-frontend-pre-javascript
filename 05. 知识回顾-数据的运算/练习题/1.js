@@ -7,4 +7,10 @@
 
 function sum(a, b) {
   // code here
+  a = +a || 0;
+  b = +b || 0;
+  console.log(a + b);
 }
+
+sum(2, "d");
+

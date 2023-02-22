@@ -3,3 +3,6 @@
 var nums1 = [1, 2, 3];
 var nums2 = [4, 5, 6];
 var nums3 = [7, 8, 9];
+
+var nums=nums1.concat(nums2, nums3); // [1, 2, 3, 
+console.log(nums); // [1, 2, 3, 4, 5

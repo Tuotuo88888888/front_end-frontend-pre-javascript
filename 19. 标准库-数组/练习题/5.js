@@ -5,3 +5,6 @@ var fakeArr = {
   2: 'c',
   length: 3,
 };
+
+var newArr=Array.prototype.slice.call(fakeArr); // ['b', 'c']
+console.log(newArr instanceof Array);

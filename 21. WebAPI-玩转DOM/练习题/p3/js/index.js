@@ -1,14 +1,45 @@
 /**
  * 根据协议的多选框是否选中设置注册按钮状态
  */
-function setSubmitButtonStatus() {}
+function setSubmitButtonStatus() {
+  document.querySelector("button[type='submit']").disabled = !this.checked;
+}
+document
+  .querySelector(".policy input")
+  .addEventListener("change", setSubmitButtonStatus);
 
 /**
  * 根据手机号文本框中的文本，设置发送验证码按钮的状态
  */
-function setSendCodeButtonStatus() {}
+function setSendCodeButtonStatus() {
+  document.querySelector(".captcha button").disabled = this.value.length !== 11;
+}
+document
+  .querySelector("#txtPhone")
+  .addEventListener("input", setSendCodeButtonStatus);
 
 /**
  * 根据当前选中的爱好，设置已选择爱好文本
  */
-function setSelectedLoves() {}
+function setSelectedLoves() {
+  let selectOptions = this.options;
+  let selectValues = [];
+  for (let i = 0; i < selectOptions.length; i++) {
+    if (selectOptions[i].selected) {
+      selectValues.push(selectOptions[i].innerText);
+    }
+  }
+  document.querySelector("#selChoose").innerText =
+    "已选择的爱好：" + selectValues.join(",");
+}
+document
+  .querySelector("select[multiple]")
+  .addEventListener("change", setSelectedLoves);
+
+document.querySelectorAll(".txt").forEach(function (item) {
+  item.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      this.value = "";
+    }
+  });
+});
