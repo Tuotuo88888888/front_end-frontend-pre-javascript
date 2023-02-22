@@ -2,14 +2,14 @@
 
 function validateHelper(id, callback) {
   var div = document.getElementById(id);
-  var inp = div.querySelector('input');
-  var msg = div.querySelector('.msg');
+  var inp = div.querySelector("input");
+  var msg = div.querySelector(".msg");
 
   var value = inp.value.trim();
   var err = callback(value); // 错误消息
   msg.innerText = err; // 设置错误消息到p元素中
   // 判断是否有错误
-  div.className = err ? 'form-item err' : 'form-item';
+  div.className = err ? "form-item err" : "form-item";
 
   return !err;
 }
@@ -18,8 +18,12 @@ function validateHelper(id, callback) {
  * 验证邮箱
  */
 function validateEmail() {
-  return validateHelper('email', function (value) {
+  return validateHelper("email", function (value) {
     // 验证邮箱，返回错误消息，value为邮箱文本框的值
+    var emailRegex = new RegExp(/^.+@[^\s\.]+(\.[^\s\.]+){1,2}$/);
+    if (emailRegex.test(value)) {
+      return "邮箱格式不正确";
+    }
   });
 }
 
@@ -27,8 +31,12 @@ function validateEmail() {
  * 验证库存
  */
 function validateStock() {
-  return validateHelper('stock', function (value) {
+  return validateHelper("stock", function (value) {
     // 验证库存，返回错误消息，value为库存文本框的值
+    var stockRegex = new RegExp(/^[1-9]\d*|0$/);
+    if (stockRegex.test(value)) {
+      return "库存格式不正确";
+    }
   });
 }
 
@@ -36,8 +44,12 @@ function validateStock() {
  * 验证价格
  */
 function validatePrice() {
-  return validateHelper('price', function (value) {
+  return validateHelper("price", function (value) {
     // 验证价格，返回错误消息，value为价格文本框的值
+    var priceRegex = new RegExp(/^([1-9]\d*|0)($|(\.\d{2}))$/);
+    if (priceRegex.test(value)) {
+      return "价格格式不正确";
+    }
   });
 }
 
@@ -54,17 +66,17 @@ function validateForm() {
 
 // 注册事件
 
-var email = document.querySelector('#email input');
-var stock = document.querySelector('#stock input');
-var price = document.querySelector('#price input');
+var email = document.querySelector("#email input");
+var stock = document.querySelector("#stock input");
+var price = document.querySelector("#price input");
 
-email.addEventListener('input', validateEmail);
-stock.addEventListener('input', validateStock);
-price.addEventListener('input', validatePrice);
+email.addEventListener("input", validateEmail);
+stock.addEventListener("input", validateStock);
+price.addEventListener("input", validatePrice);
 
-var form = document.querySelector('.form-container');
+var form = document.querySelector(".form-container");
 
-form.addEventListener('submit', function (e) {
+form.addEventListener("submit", function (e) {
   var result = validateForm();
   if (!result) {
     // 验证未通过，阻止提交
