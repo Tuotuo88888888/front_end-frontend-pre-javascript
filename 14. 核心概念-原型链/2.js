@@ -5,4 +5,4 @@ var obj = {
 
 obj.__proto__ = null;
 
-clg;
+console.log(obj.__proto__);
